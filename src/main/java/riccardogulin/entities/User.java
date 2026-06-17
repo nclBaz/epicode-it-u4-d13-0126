@@ -2,6 +2,7 @@ package riccardogulin.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -15,12 +16,31 @@ public class User {
 	private String name;
 	private String surname;
 
+	// 1 TO 1 BIDIREZIONALE
+	// La bidirezionalità NON E' OBBLIGATORIA! Lo faccio solo se mi serve un modo
+	// per, una volta ottenuto un utente, risalire al suo documento
+	@OneToOne(mappedBy = "owner") // owner è il nome dell'attributo lato Document
+	private Document document;
+
+	// 1 TO MANY BIDIREZIONALE
+	@OneToMany(mappedBy = "author")
+	private List<Blog> blogs;
+
+
 	public User() {
 	}
 
 	public User(String name, String surname) {
 		this.name = name;
 		this.surname = surname;
+	}
+
+	public List<Blog> getBlogs() {
+		return blogs;
+	}
+
+	public Document getDocument() {
+		return document;
 	}
 
 	public UUID getId() {

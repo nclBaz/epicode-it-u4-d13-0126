@@ -5,6 +5,8 @@
     <persistence-unit name="u4d13pu">
         <class>riccardogulin.entities.User</class>
         <class>riccardogulin.entities.Document</class>
+        <class>riccardogulin.entities.Blog</class>
+        <class>riccardogulin.entities.Category</class>
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/u4d13"/>
             <!-- Nel mio caso la porta è 5433 nel vostro sarà 5432 (ovviamente se non l'avete cambiata) -->
